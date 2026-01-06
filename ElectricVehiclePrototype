@@ -1,0 +1,66 @@
+const int motor1Pin1 = 2; 
+const int motor1Pin2 = 3;
+const int motor2Pin1 = 4;
+const int motor2Pin2 = 5;
+const int motor3Pin1 = 9;
+const int motor3Pin2 = 10;
+const int motor4Pin1 = 11;
+const int motor4Pin2 = 12;
+
+const int buttonPin = 8;
+int state;
+
+void setup() {
+  // defines which pins are for the button and motors.
+  pinMode(motor1Pin1, OUTPUT);
+  pinMode(motor1Pin2, OUTPUT);
+  pinMode(motor2Pin1, OUTPUT);
+  pinMode(motor2Pin2, OUTPUT);
+
+  pinMode(buttonPin, INPUT_PULLUP);
+}
+
+void loop() {
+  // If the button is pressed:
+  state = digitalRead(buttonPin);
+
+  if (state == HIGH) {
+    digitalWrite(motor1Pin1, LOW);
+    digitalWrite(motor1Pin2, LOW);
+
+    digitalWrite(motor2Pin1, LOW);
+    digitalWrite(motor2Pin2, LOW);
+
+    digitalWrite(motor3Pin1, LOW);
+    digitalWrite(motor3Pin2, LOW);
+
+    digitalWrite(motor4Pin1, LOW);
+    digitalWrite(motor4Pin2, LOW);
+
+  } else {
+    digitalWrite(motor1Pin1, HIGH);
+    digitalWrite(motor1Pin2, LOW);
+
+    digitalWrite(motor2Pin1, HIGH);
+    digitalWrite(motor2Pin2, LOW);
+
+    digitalWrite(motor3Pin1, HIGH);
+    digitalWrite(motor3Pin2, LOW);
+
+    digitalWrite(motor4Pin1, HIGH);
+    digitalWrite(motor4Pin2, LOW);
+
+    delay(19610.);
+
+    //table of delay values depending on distance
+    //7m = 15800.
+    //7.5m = 
+    //8m = 17800
+    // 8.5m = 
+    // 9m = 20225
+    // 9.5m = 
+    //10m = 
+    
+    //6648.59(1.1314)^x <- Regression that roughly gave the amount of time based on experimental values.
+  }
+}
